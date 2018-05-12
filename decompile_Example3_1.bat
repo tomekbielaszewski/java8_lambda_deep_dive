@@ -1,0 +1,1 @@
+javap -c -p target\classes\pl\grizwold\java8_lambda_deep_dive\Example3_1_LambdaVsAnonymousClass.class
