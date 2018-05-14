@@ -1,5 +1,6 @@
 package pl.grizwold.java8_lambda_deep_dive;
 
+import java.util.Objects;
 import java.util.function.*;
 
 public class Example2_1_MethodReference {
@@ -10,6 +11,8 @@ public class Example2_1_MethodReference {
     private String someString = "Lubie placki";
 
     private void run() {
+        //Objects::nonNull;
+
         //this::getSomeString;
         //Example2_1_MethodReference::getSomeString;
 
@@ -43,8 +46,8 @@ public class Example2_1_MethodReference {
     }
 
 //    @FunctionalInterface
-//    interface TriConsumer<CLASS, IN1, IN2> {
-//        void accept(CLASS clazz, IN1 attribute1, IN2 attribute2);
+//    interface TriConsumer<IN1, IN2, IN3> {
+//        void accept(IN1 attribute1, IN2 attribute2, IN3 attribute3);
 //    }
 //
 //    @FunctionalInterface
