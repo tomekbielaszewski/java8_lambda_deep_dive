@@ -35,8 +35,6 @@ public class Example5_checkedExceptions_withMetafactory {
 
     @FunctionalInterface
     interface SilentInvoker {
-        MethodType SIGNATURE = MethodType.methodType(Object.class, Callable.class);//signature of method INVOKE
-
         <V> V invoke(final Callable<V> callable);
     }
 
