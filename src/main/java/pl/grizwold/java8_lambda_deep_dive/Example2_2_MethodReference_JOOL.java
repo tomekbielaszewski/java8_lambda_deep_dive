@@ -3,6 +3,7 @@ package pl.grizwold.java8_lambda_deep_dive;
 import org.jooq.lambda.function.Consumer3;
 import org.jooq.lambda.function.Function3;
 
+import java.util.Objects;
 import java.util.function.*;
 
 public class Example2_2_MethodReference_JOOL {
@@ -33,6 +34,9 @@ public class Example2_2_MethodReference_JOOL {
 
         BiFunction<String, String, String> concat = this::concat;
         Function3<Example2_2_MethodReference_JOOL, String, String, String> detached_concat = Example2_2_MethodReference_JOOL::concat;
+
+        String apply = detached_concat.apply(this, "a", "b");
+        System.out.println(apply);
     }
 
     private String getSomeString() {
