@@ -17,6 +17,8 @@ public class Example3_2_LambdaGeneratedCode {
     public void run() {
         execute(() -> "Lubie placki");
 
+        System.out.println("\n###########\n");
+
         Method[] declaredMethods = Example3_2_LambdaGeneratedCode.class.getDeclaredMethods();
         Arrays.asList(declaredMethods)
                 .forEach(m -> System.out.println(m));
@@ -24,5 +26,6 @@ public class Example3_2_LambdaGeneratedCode {
 
     private void execute(Supplier<String> supplier) {
         System.out.println(supplier.get());
+        System.out.println(supplier.getClass());
     }
 }
