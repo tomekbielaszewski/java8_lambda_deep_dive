@@ -35,6 +35,10 @@
 	- pokaz ze Holder::getHolded mozna przypisac do Consumer
 			Consumer<Holder> getHoldedConsumer = Holder::getHolded;
 			
+	- special void compatibility rule: 
+	    Jesli lambda zwraca wartosc to mozna ją przypisac do deskryptora funkcji zwracającego voida (tutaj: consumer)
+	    Tak samo jak mozna ignorowac zwracaną wartość z metod 
+			
 	- pokaz ze powyzsze mozna przekazac do forEach()
 			holders.forEach(getHoldedConsumer);
 			
