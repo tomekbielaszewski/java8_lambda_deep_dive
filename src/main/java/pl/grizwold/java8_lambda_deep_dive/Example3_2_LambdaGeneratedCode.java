@@ -1,7 +1,5 @@
 package pl.grizwold.java8_lambda_deep_dive;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class Example3_2_LambdaGeneratedCode {
@@ -10,22 +8,11 @@ public class Example3_2_LambdaGeneratedCode {
         new Example3_2_LambdaGeneratedCode().run();
     }
 
-//    private static String lambda$run$0() {
-//        return "ala ma kota";
-//    }
-
     public void run() {
-        execute(() -> "Lubie placki");
-
-        System.out.println("\n###########\n");
-
-        Method[] declaredMethods = Example3_2_LambdaGeneratedCode.class.getDeclaredMethods();
-        Arrays.asList(declaredMethods)
-                .forEach(m -> System.out.println(m));
+        execute(() -> "my sweet string");
     }
 
     private void execute(Supplier<String> supplier) {
         System.out.println(supplier.get());
-        System.out.println(supplier.getClass());
     }
 }
