@@ -82,3 +82,40 @@
 	- zdekompiluj kod - czemu nie ma wygenerowanej lambdy z forEach'a po metodach?
 	
 	- omów invokedynamic
+	
+# Example 4
+
+## part 1
+    
+    - pokaz ze mozna wywolac metode nowa refleksją za pomocą MethodHandle
+            MethodType type = MethodType.methodType(int.class, new Class<?>[] {String.class});
+            MethodHandles.Lookup lookup = MethodHandles.lookup();
+            MethodHandle countHandle = lookup.findStatic(Example4_1_MethodHandle_PolymorphicSignature.class, "count", type);
+    
+            int foo = (int) countHandle.invokeExact("foo");
+            System.out.println(foo);
+            
+    - pokaz kod o sygneturze podobnej do MethodHandle i ze wyglada identycznie (tak samo przyjmuje tablice i trzeba castowac return)
+            int bar = (int) nonPolymorphicInvoke("foo");
+            System.out.println(bar);
+            
+            private Object nonPolymorphicInvoke(Object... args) {
+                return args.length;
+            }
+            
+    - pokaz ze invokeExact ma @PolimorphicSignature w deklaracji metody co powoduje inną kompilację
+    
+    - pokaz dekompilowany kod
+            javap -p -c target\classes\pl\grizwold\java8_lambda_deep_dive\Example4_1_MethodHandle_PolymorphicSignature.class
+            
+            # Wywołanie MethodHandle.invokeExact jest jakby metoda miala argument String i return int
+                Method java/lang/invoke/MethodHandle.invokeExact:(Ljava/lang/String;)I
+                
+            # Wywołanie nonPolymorphicInvoke() tworzy tablicę string i jawnie castuje Integer na int
+                40: anewarray     #7                  // class java/lang/String
+                45: ldc           #13                 // String foo
+                48: invokespecial #15                 // Method nonPolymorphicInvoke:([Ljava/lang/String;)Ljava/lang/Object;
+                51: checkcast     #16                 // class java/lang/Integer
+                54: invokevirtual #17                 // Method java/lang/Integer.intValue:()I
+
+    
