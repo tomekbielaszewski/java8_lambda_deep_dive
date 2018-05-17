@@ -4,7 +4,7 @@
 	- pokaz wynik z parallel
 	- Lambdy nie mogą trzymac stanu na zewnatrz
 
-#Example 2
+# Example 2
 
 ## part 1
 
