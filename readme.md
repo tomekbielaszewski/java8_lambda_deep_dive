@@ -167,4 +167,6 @@
         
     - wywołaj lambdę
         Supplier<String> supplierLambda = (Supplier<String>) lambdaFactory.invoke();
+        
+    - LambdaMetafactory potrafi wygenerowac implementacje interfejsu funkcyjnego jako callsite ktory moze pozniej zostac wywolany przez JVM za pomoca invokedynamic
             
