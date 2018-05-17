@@ -137,4 +137,34 @@
     
 ## part 3
 
-      
+    - czas złożyć lambdę z typu Supplier i metody zwracajacej nam Stringa 
+    
+    - stworz MethodType dla
+        - sygnatury metody w Supplier
+        - istniejacej, docelowej metody
+        - typu interfejsu funkcyjnego - Supplier
+    
+        MethodType supplierSignature = MethodType.methodType(Object.class);
+        MethodType actualMethodSignature = MethodType.methodType(String.class);
+        MethodType functionalInterfaceUsed = MethodType.methodType(Supplier.class);
+        
+    - nazwij jaką metodę w interfejsie funkcyjnym wywołujesz
+        String functionalInterfaceMethodName = "get";
+        
+    - stwórz MethodHandle do istniejącej metody będącą ciałem lambdy
+        MethodHandle lambdaBodyHandle = caller.findStatic(Example4_3_LambdaMetafactory.class, "getString", actualMethodSignature);
+        
+    - stwórz metafactory, które stworzy lambdę
+        CallSite metafactory = LambdaMetafactory.metafactory(
+                caller,
+                functionalInterfaceMethodName,
+                functionalInterfaceUsed,
+                supplierSignature,
+                lambdaBodyHandle,
+                supplierSignature);
+
+        MethodHandle lambdaFactory = metafactory.getTarget();
+        
+    - wywołaj lambdę
+        Supplier<String> supplierLambda = (Supplier<String>) lambdaFactory.invoke();
+            
