@@ -118,4 +118,23 @@
                 51: checkcast     #16                 // class java/lang/Integer
                 54: invokevirtual #17                 // Method java/lang/Integer.intValue:()I
 
+## part 2
     
+    - opakuj użyty MethodHandle w ConstantCallSite
+            private static CallSite bootstrap() throws Throwable {
+                MethodType type = MethodType.methodType(int.class, new Class<?>[] {String.class});
+                MethodHandles.Lookup lookup = MethodHandles.lookup();
+                MethodHandle countHandle = lookup.findStatic(Example4_2_MethodHandle_CallSite.class, "count", type);
+                return new ConstantCallSite(countHandle);
+            }
+            
+    - użyj CallSite aby wywołać count
+            CallSite callSite = bootstrap();
+            
+            int foo = (int) callSite.getTarget().invokeExact("foo");
+            
+    - CallSite jest to wrapper na MethodHandle. CallSite jest uzywany przez instrukcje invokedynamic.
+    
+## part 3
+
+      
