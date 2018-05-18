@@ -39,9 +39,6 @@
 	    Jesli lambda zwraca wartosc to mozna ją przypisac do deskryptora funkcji zwracającego voida (tutaj: consumer)
 	    Tak samo jak mozna ignorowac zwracaną wartość z metod 
 			
-	- pokaz ze powyzsze mozna przekazac do forEach()
-			holders.forEach(getHoldedConsumer);
-			
 	- pokaz jednolinijkową lambdę która odpowiada powyzszemu
 			holders.forEach(h -> h.getHolded());
 			
