@@ -1,3 +1,10 @@
+# zJava #5: Java 8 Lambda - (very) deep dive
+
+Przykłady zaprezentowane jako DEMO podczas meetupu zJava #5
+17.05.2018r
+
+Kod uzupełniony podczas prezentacji można znaleźć na branchu `after_presentation`
+
 # Example 1.
 
 	- pokaz jednowatkowy wynik
@@ -38,9 +45,6 @@
 	- special void compatibility rule: 
 	    Jesli lambda zwraca wartosc to mozna ją przypisac do deskryptora funkcji zwracającego voida (tutaj: consumer)
 	    Tak samo jak mozna ignorowac zwracaną wartość z metod 
-			
-	- pokaz ze powyzsze mozna przekazac do forEach()
-			holders.forEach(getHoldedConsumer);
 			
 	- pokaz jednolinijkową lambdę która odpowiada powyzszemu
 			holders.forEach(h -> h.getHolded());
