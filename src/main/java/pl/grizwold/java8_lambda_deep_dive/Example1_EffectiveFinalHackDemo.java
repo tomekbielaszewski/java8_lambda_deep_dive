@@ -14,7 +14,7 @@ public class Example1_EffectiveFinalHackDemo {
         int[] sum = {0};
 
         IntStream.range(1,1000)
-//                .parallel()
+                .parallel()
                 .forEach(i -> sum[0]+=i);
 
         Thread.sleep(20);

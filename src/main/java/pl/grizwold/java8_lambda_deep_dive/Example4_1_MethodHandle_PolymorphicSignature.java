@@ -8,6 +8,20 @@ public class Example4_1_MethodHandle_PolymorphicSignature {
     }
 
     private void run() throws Throwable {
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        MethodType signature = MethodType.methodType(int.class, new Class<?>[] { String.class});
+        MethodHandle count = lookup.findStatic(Example4_1_MethodHandle_PolymorphicSignature.class,
+                "count", signature);
+
+        int foo = (int) count.invokeExact("foo");
+        System.out.println(foo);
+
+        int bar = (int) nonPolymorphicInvoke("foo");
+        System.out.println(bar);
+    }
+
+    private Object nonPolymorphicInvoke(Object... args) {
+        return args.length;
     }
 
     static int count(String string) {

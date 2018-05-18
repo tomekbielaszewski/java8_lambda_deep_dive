@@ -29,5 +29,20 @@ public class Example2_2_MethodReference_appliance {
                 new Holder("1"),
                 new Holder("2"),
                 new Holder("3"));
+
+        holders.forEach(Holder::getHolded);
+
+        holders.forEach(h -> h.getHolded());
+
+        holders.forEach(h -> {
+            h.getHolded();
+            return;
+        });
+
+        Class<Void> voidClass = void.class;
+
+//        holders.forEach(getHoldedFunction); //compile error - Function is not a Consumer
+
+        holders.stream().map(getHoldedFunction);
     }
 }
